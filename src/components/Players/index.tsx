@@ -1,4 +1,4 @@
-import { Table, TableContainer, Tbody, Tfoot, Th, Thead, Tr, Td } from "@chakra-ui/react";
+import { Table, TableContainer, Tbody, Tfoot, Th, Thead, Tr, Td, Spinner, Center} from "@chakra-ui/react";
 import { PlayerContext } from "./context"
 import { useEffect, useState } from 'react';
 import axios from "axios";
@@ -15,6 +15,7 @@ interface Player {
 export const Players = () =>{
 
     const [AllPlayers, setAllPlayers] = useState<Player[]>()
+    
 
 
 
@@ -44,8 +45,10 @@ export const Players = () =>{
                             <Th>Badstreak</Th>
                             </Tr>
                         </Thead>
-                        <Tbody>
+                        <Tbody >
+                
                            {
+                            AllPlayers ? 
                             AllPlayers?.map((player: Player) => {
                                 return(
                                     <Tr>
@@ -58,7 +61,11 @@ export const Players = () =>{
                                     </Tr>
                                 )
                             })
-                           }
+                            :   <Center position='absolute'  left='50%' top='62%' >
+                                    <Spinner/>
+                                </Center>
+                        }
+
                         </Tbody>
                     </Table>
                 </TableContainer>
