@@ -1,4 +1,4 @@
-import { Table, TableContainer, Tbody, Tfoot, Th, Thead, Tr, Td, Spinner, Center} from "@chakra-ui/react";
+import { Table, TableContainer, Tbody,Th, Thead, Tr, Td, Spinner, Center} from "@chakra-ui/react";
 import { PlayerContext } from "./context"
 import { useEffect, useState } from 'react';
 import axios from "axios";
@@ -16,9 +16,6 @@ export const Players = () =>{
 
     const [AllPlayers, setAllPlayers] = useState<Player[]>()
     
-
-
-
     useEffect( () =>{
         const getApi = async() =>{
             const resp = await axios.get('https://lista-b-santa-cecilia-server-production.up.railway.app/player')
@@ -31,9 +28,9 @@ export const Players = () =>{
     const playerContext = PlayerContext.useValue();
 
     return (
-        <div>
-            <PlayerContext.Provider value={playerContext}>
-                <TableContainer display='block'>
+        <>
+            <PlayerContext.Provider value={playerContext} >
+                <TableContainer display='block' w={{sm:'450px',  xl: '100%'}}>
                     <Table variant='simple'>
                         <Thead>
                             <Tr>
@@ -70,6 +67,6 @@ export const Players = () =>{
                     </Table>
                 </TableContainer>
             </PlayerContext.Provider>
-        </div>
+        </>
     )
 }
