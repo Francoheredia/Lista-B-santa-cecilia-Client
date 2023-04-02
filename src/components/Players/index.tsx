@@ -30,7 +30,7 @@ export const Players = () =>{
     return (
         <>
             <PlayerContext.Provider value={playerContext} >
-                <TableContainer display='block' w={{sm:'450px',  xl: '100%'}}>
+                <TableContainer display='block' w={{sm:'90%', xl: '100%'}} >
                     <Table variant='simple'>
                         <Thead>
                             <Tr>
